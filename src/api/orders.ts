@@ -1,24 +1,41 @@
-import { simulateRequest, getDataset } from './index'
+import type { Order } from '../types';
+import { getDataset, simulateRequest, type VariantKey } from './index';
 
-const withOrderTotal = (order) => ({
+export interface OrderWithTotal extends Order {
+  total_price: number;
+}
+
+export interface OrderFilters {
+  userId?: number;
+}
+
+function withOrderTotal(order: Order): OrderWithTotal {
+  return {
     ...order,
     total_price: order.items.reduce(
-        (sum, item) => sum + item.unit_price * item.quantity,
-        0
+      (sum, item) => sum + item.unit_price * item.quantity,
+      0
     ),
-});
+  };
+}
 
-export const getOrders = async ({ userId } = {}, variant) => {
-    let orders = getDataset(variant).orders;
+export async function getOrders(
+  { userId }: OrderFilters = {},
+  variant?: VariantKey
+): Promise<OrderWithTotal[]> {
+  let orders = getDataset(variant).orders;
 
-    if (userId) {
-        orders = orders.filter((o) => o.user_id === Number(userId));
-    }
+  if (userId) {
+    orders = orders.filter((o) => o.user_id === Number(userId));
+  }
 
-    return simulateRequest(orders.map(withOrderTotal));
-};
+  return simulateRequest(orders.map(withOrderTotal));
+}
 
-export const getOrderById = async (id, variant) => {
-    const order = getDataset(variant).orders.find((o) => o.id === Number(id));
-    return simulateRequest(order ? withOrderTotal(order) : null);
-};
+export async function getOrderById(
+  id: number | string,
+  variant?: VariantKey
+): Promise<OrderWithTotal | null> {
+  const order = getDataset(variant).orders.find((o) => o.id === Number(id));
+  return simulateRequest(order ? withOrderTotal(order) : null);
+}

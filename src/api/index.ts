@@ -1,41 +1,53 @@
-import mockData from '../datas/mockData.json';
+import mockData from '../datas/mockData.json'
+import type { Category, Order, Product, StoreInfo, User } from '../types';
 
-let activeVariant = 'variantA';
+export type VariantKey = 'variantA' | 'variantB';
 
-export const simulateRequest = (data: any[], delay = 150) =>
-    new Promise((resolve) => {
-        setTimeout(() => resolve(structuredClone(data)), delay);
-    });
+export interface Dataset {
+  companyName: string;
+  catalogTitle: string;
+  users: User[];
+  categories: Category[];
+  products: Product[];
+  orders: Order[];
+}
 
-export const getDataset = (variant = activeVariant) => {
-    const dataset = mockData[variant];
-    if (!dataset) {
-        throw new Error(`Вариант "${variant}" не найден в мок-файле`);
-    }
-    return dataset;
-};
+const datasets = mockData as unknown as Record<VariantKey, Dataset>;
 
+// Выберите 'variantA' (СтепМаркет) или 'variantB' (СпортЛиния)
+let activeVariant: VariantKey = 'variantB';
 
-export const setVariant = (variant) => {
-    if (!mockData[variant]) {
-        throw new Error(`Неизвестный вариант: ${variant}`);
-    }
-    activeVariant = variant;
-};
+export function simulateRequest<T>(data: T, delay = 150): Promise<T> {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(structuredClone(data)), delay);
+  });
+}
 
-export const getCurrentVariant = () => activeVariant;
+export function getDataset(variant: VariantKey = activeVariant): Dataset {
+  const dataset = datasets[variant];
+  if (!dataset) {
+    throw new Error(`Вариант "${variant}" не найден в мок-файле`);
+  }
+  return dataset;
+}
 
-export const getStoreInfo = async (variant) => {
-    const { companyName, catalogTitle } = getDataset(variant);
-    return simulateRequest({ companyName, catalogTitle });
-};
+export function setVariant(variant: VariantKey): void {
+  if (!datasets[variant]) {
+    throw new Error(`Неизвестный вариант: ${variant}`);
+  }
+  activeVariant = variant;
+}
 
-export const getCategories = async (variant) => {
-    return simulateRequest(getDataset(variant).categories);
-};
+export function getCurrentVariant(): VariantKey {
+  return activeVariant;
+}
 
-export const getManufacturers = async (variant) => {
-    const names = getDataset(variant).products.map((p) => p.manufacturer_name);
-    const uniqueNames = [...new Set(names)].sort();
-    return simulateRequest(uniqueNames);
-};
+export async function getStoreInfo(variant?: VariantKey): Promise<StoreInfo> {
+  const { companyName, catalogTitle } = getDataset(variant);
+  return simulateRequest({ companyName, catalogTitle });
+}
+
+// Реэкспорт всех API-функций из единой точки входа
+export * from './goods';
+export * from './orders';
+export * from './users';
