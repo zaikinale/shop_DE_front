@@ -1,0 +1,468 @@
+{
+  "variantA": {
+    "companyName": "ООО «СтепМаркет»",
+    "catalogTitle": "Каталог обуви",
+    "users": [
+      {
+        "id": 1,
+        "login": "client1",
+        "full_name": "Иванов Алексей Сергеевич",
+        "role_code": "client",
+        "role_name": "Клиент"
+      },
+      {
+        "id": 2,
+        "login": "client2",
+        "full_name": "Смирнова Елена Дмитриевна",
+        "role_code": "client",
+        "role_name": "Клиент"
+      },
+      {
+        "id": 3,
+        "login": "manager1",
+        "full_name": "Петров Максим Андреевич",
+        "role_code": "manager",
+        "role_name": "Менеджер"
+      },
+      {
+        "id": 4,
+        "login": "admin1",
+        "full_name": "Козлова Ольга Викторовна",
+        "role_code": "admin",
+        "role_name": "Администратор"
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Кроссовки"
+      },
+      {
+        "id": 2,
+        "name": "Ботинки"
+      },
+      {
+        "id": 3,
+        "name": "Туфли"
+      },
+      {
+        "id": 4,
+        "name": "Сандалии"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "Кроссовки беговые AirRun",
+        "category_id": 1,
+        "category_name": "Кроссовки",
+        "manufacturer_name": "StepPro",
+        "composition": "Сетка, полиуретан, EVA-подошва",
+        "description": "Лёгкие беговые кроссовки с амортизирующей подошвой для города и зала.",
+        "base_price": 5600,
+        "image": "/images/airrun.png",
+        "variants": [
+          {
+            "id": 101,
+            "size": "40",
+            "quantity": 3
+          },
+          {
+            "id": 102,
+            "size": "41",
+            "quantity": 4
+          },
+          {
+            "id": 103,
+            "size": "42",
+            "quantity": 5
+          },
+          {
+            "id": 104,
+            "size": "43",
+            "quantity": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Ботинки зимние Nordic Boot",
+        "category_id": 2,
+        "category_name": "Ботинки",
+        "manufacturer_name": "Ralf Ringer",
+        "composition": "Натуральная кожа, натуральный мех, ТЭП",
+        "description": "Утеплённые зимние ботинки с противоскользящим протектором.",
+        "base_price": 11200,
+        "image": "/images/nordic_boot.png",
+        "variants": [
+          {
+            "id": 201,
+            "size": "41",
+            "quantity": 1
+          },
+          {
+            "id": 202,
+            "size": "42",
+            "quantity": 2
+          },
+          {
+            "id": 203,
+            "size": "43",
+            "quantity": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Туфли Classic Derby",
+        "category_id": 3,
+        "category_name": "Туфли",
+        "manufacturer_name": "Rieker",
+        "composition": "Натуральная кожа, текстильная подкладка",
+        "description": "Классические дерби для офиса и деловых встреч.",
+        "base_price": 7600,
+        "image": "",
+        "variants": [
+          {
+            "id": 301,
+            "size": "40",
+            "quantity": 2
+          },
+          {
+            "id": 302,
+            "size": "42",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Кроссовки треккинговые Urban Trail",
+        "category_id": 1,
+        "category_name": "Кроссовки",
+        "manufacturer_name": "Salomon",
+        "composition": "Мембрана Gore-Tex, синтетика, резина",
+        "description": "Влагозащитные кроссовки для пересечённой местности и походов.",
+        "base_price": 12800,
+        "image": "/images/urban_trail.png",
+        "variants": [
+          {
+            "id": 401,
+            "size": "39",
+            "quantity": 2
+          },
+          {
+            "id": 402,
+            "size": "40",
+            "quantity": 4
+          },
+          {
+            "id": 403,
+            "size": "41",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Сандалии Breeze Comfort",
+        "category_id": 4,
+        "category_name": "Сандалии",
+        "manufacturer_name": "Rieker",
+        "composition": "Нубук, анатомическая стелька, полиуретан",
+        "description": "Летние сандалии с регулируемыми ремешками для длительных прогулок.",
+        "base_price": 4600,
+        "image": "",
+        "variants": [
+          {
+            "id": 501,
+            "size": "38",
+            "quantity": 2
+          },
+          {
+            "id": 502,
+            "size": "39",
+            "quantity": 0
+          }
+        ]
+      }
+    ],
+    "orders": [
+      {
+        "id": 1,
+        "user_id": 1,
+        "client_full_name": "Иванов Алексей Сергеевич",
+        "order_date": "2026-10-15",
+        "items": [
+          {
+            "id": 1001,
+            "variant_id": 402,
+            "product_id": 4,
+            "product_name": "Кроссовки треккинговые Urban Trail",
+            "manufacturer_name": "Salomon",
+            "size": "40",
+            "quantity": 1,
+            "unit_price": 12800
+          },
+          {
+            "id": 1002,
+            "variant_id": 501,
+            "product_id": 5,
+            "product_name": "Сандалии Breeze Comfort",
+            "manufacturer_name": "Rieker",
+            "size": "38",
+            "quantity": 1,
+            "unit_price": 4600
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "user_id": 2,
+        "client_full_name": "Смирнова Елена Дмитриевна",
+        "order_date": "2026-09-12",
+        "items": [
+          {
+            "id": 1003,
+            "variant_id": 101,
+            "product_id": 1,
+            "product_name": "Кроссовки беговые AirRun",
+            "manufacturer_name": "StepPro",
+            "size": "40",
+            "quantity": 1,
+            "unit_price": 5600
+          }
+        ]
+      }
+    ]
+  },
+
+  
+  "variantB": {
+    "companyName": "ООО «СпортЛиния»",
+    "catalogTitle": "Каталог спортинвентаря",
+    "users": [
+      {
+        "id": 1,
+        "login": "client1",
+        "full_name": "Морозов Дмитрий Игоревич",
+        "role_code": "client",
+        "role_name": "Клиент"
+      },
+      {
+        "id": 2,
+        "login": "client2",
+        "full_name": "Волкова Анна Павловна",
+        "role_code": "client",
+        "role_name": "Клиент"
+      },
+      {
+        "id": 3,
+        "login": "manager1",
+        "full_name": "Соколов Артём Олегович",
+        "role_code": "manager",
+        "role_name": "Менеджер"
+      },
+      {
+        "id": 4,
+        "login": "admin1",
+        "full_name": "Лебедева Наталья Юрьевна",
+        "role_code": "admin",
+        "role_name": "Администратор"
+      }
+    ],
+    "categories": [
+      {
+        "id": 1,
+        "name": "Фитнес"
+      },
+      {
+        "id": 2,
+        "name": "Силовые тренировки"
+      },
+      {
+        "id": 3,
+        "name": "Игровые виды"
+      },
+      {
+        "id": 4,
+        "name": "Экипировка"
+      }
+    ],
+    "products": [
+      {
+        "id": 1,
+        "name": "Коврик для йоги ProMat",
+        "category_id": 1,
+        "category_name": "Фитнес",
+        "manufacturer_name": "Demix",
+        "composition": "Термоэластопласт (TPE), антискользящее покрытие",
+        "description": "Плотный двухслойный коврик для фитнеса, йоги и растяжки.",
+        "base_price": 3200,
+        "image": "/images/yogamat.png",
+        "variants": [
+          {
+            "id": 601,
+            "size": "173×61 см",
+            "quantity": 4
+          },
+          {
+            "id": 602,
+            "size": "183×66 см",
+            "quantity": 5
+          },
+          {
+            "id": 603,
+            "size": "190×80 см",
+            "quantity": 0
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Гантель обрезиненная HexPro",
+        "category_id": 2,
+        "category_name": "Силовые тренировки",
+        "manufacturer_name": "Torneo",
+        "composition": "Чугун, износостойкая резина, хромированная сталь",
+        "description": "Гексагональная гантель с противоскользящей насечкой на рукояти.",
+        "base_price": 4800,
+        "image": "/images/dumbbell.png",
+        "variants": [
+          {
+            "id": 701,
+            "size": "4 кг",
+            "quantity": 1
+          },
+          {
+            "id": 702,
+            "size": "6 кг",
+            "quantity": 2
+          },
+          {
+            "id": 703,
+            "size": "8 кг",
+            "quantity": 0
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Мяч волейбольный MatchPro",
+        "category_id": 3,
+        "category_name": "Игровые виды",
+        "manufacturer_name": "Mikasa",
+        "composition": "Синтетическая кожа (PU), бутиловая камера",
+        "description": "Тренировочный мяч стандартного размера для зала и площадки.",
+        "base_price": 6400,
+        "image": "",
+        "variants": [
+          {
+            "id": 801,
+            "size": "Размер 4",
+            "quantity": 2
+          },
+          {
+            "id": 802,
+            "size": "Размер 5",
+            "quantity": 3
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "name": "Шлем велосипедный AeroGuard",
+        "category_id": 4,
+        "category_name": "Экипировка",
+        "manufacturer_name": "Stern",
+        "composition": "Поликарбонат, вспененный EPS, съёмная подкладка",
+        "description": "Лёгкий вентилируемый шлем с точной регулировкой охвата головы.",
+        "base_price": 5200,
+        "image": "/images/helmet.png",
+        "variants": [
+          {
+            "id": 901,
+            "size": "M (54–58)",
+            "quantity": 3
+          },
+          {
+            "id": 902,
+            "size": "L (58–61)",
+            "quantity": 4
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "name": "Набор эспандеров PowerBand",
+        "category_id": 1,
+        "category_name": "Фитнес",
+        "manufacturer_name": "Demix",
+        "composition": "Натуральный латекс, тканевые петли",
+        "description": "Комплект силовых лент разного сопротивления для домашних тренировок.",
+        "base_price": 2400,
+        "image": "",
+        "variants": [
+          {
+            "id": 1001,
+            "size": "Light–Hard",
+            "quantity": 2
+          },
+          {
+            "id": 1002,
+            "size": "Pro Set",
+            "quantity": 0
+          }
+        ]
+      }
+    ],
+    "orders": [
+      {
+        "id": 1,
+        "user_id": 1,
+        "client_full_name": "Морозов Дмитрий Игоревич",
+        "order_date": "2026-10-15",
+        "items": [
+          {
+            "id": 2001,
+            "variant_id": 901,
+            "product_id": 4,
+            "product_name": "Шлем велосипедный AeroGuard",
+            "manufacturer_name": "Stern",
+            "size": "M (54–58)",
+            "quantity": 1,
+            "unit_price": 5200
+          },
+          {
+            "id": 2002,
+            "variant_id": 1001,
+            "product_id": 5,
+            "product_name": "Набор эспандеров PowerBand",
+            "manufacturer_name": "Demix",
+            "size": "Light–Hard",
+            "quantity": 1,
+            "unit_price": 2400
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "user_id": 2,
+        "client_full_name": "Волкова Анна Павловна",
+        "order_date": "2026-09-10",
+        "items": [
+          {
+            "id": 2003,
+            "variant_id": 601,
+            "product_id": 1,
+            "product_name": "Коврик для йоги ProMat",
+            "manufacturer_name": "Demix",
+            "size": "173×61 см",
+            "quantity": 1,
+            "unit_price": 3200
+          }
+        ]
+      }
+    ]
+  }
+}
