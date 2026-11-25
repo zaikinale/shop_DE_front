@@ -56,3 +56,21 @@ export interface Order {
   items: OrderItem[];
   total_price?: number;
 }
+
+export interface EnrichedProduct extends Product {
+  totalStock: number;
+  stockLabel: 'много' | 'мало';
+  isLowStock: boolean;
+  discountPercent: number;
+  discountedPrice: number;
+}
+
+export interface DraftOrderItem {
+  variant_id: number;
+  product_id: number;
+  product_name: string;
+  manufacturer_name: string;
+  size: string;
+  quantity: number;
+  unit_price: number;
+}

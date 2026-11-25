@@ -1,10 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
+import './App.css'
 
 import Main from './pages/Main';
 import Login from './pages/Login';
 import Error from './pages/Error';
-import Catalog from './pages/Catalog';
 import Orders from './pages/Orders';
+import ProductDetail from './pages/RoductDetail'
+
 import Header from './components/Header';
 import ProtectedRoute from './components/ProtectedRoute';
 
@@ -15,7 +17,7 @@ export default function App() {
       <Routes>
         <Route index element={<Main />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/catalog" element={<Catalog />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
         <Route
           path="/orders"
           element={

@@ -1,37 +1,66 @@
-import type { Product } from '../types';
-
-import placeholder from '../assets/placeholder.png'
+import type { SyntheticEvent } from 'react';
+import { Link } from 'react-router-dom';
+import picture from '../assets/placeholder.png';
+import type { EnrichedProduct } from '../types';
 
 interface ProductCardProps {
-    data: Product;
+  data: EnrichedProduct;
 }
 
 export default function ProductCard({ data }: ProductCardProps) {
-    const totalQuantity = data.variants.reduce((sum, v) => sum + v.quantity, 0);
+  const imgSrc = data.image ? data.image : picture;
+  const cardClass = data.isLowStock ? 'card low-stock' : 'card';
 
-    return (
-        <div className="card">
-            <img
-                className="card__img"
-                src={data.image || placeholder}
-                alt={data.name}
-            />    
-            <div className="card__content">
-                <div className="content__desc">
-                    <h3 className="desc__title">
-                        {data.manufacturer_name} | {data.name}
-                    </h3>
-                    <p className="desc__category">Категория: {data.category_name}</p>
-                    <p className="desc__quantity">Количество: {totalQuantity} шт.</p>
-                    <p className="desc__composition">Состав: {data.composition}</p>
-                </div>
+  const handleImageError = (event: SyntheticEvent<HTMLImageElement>) => {
+    event.currentTarget.onerror = null;
+    event.currentTarget.src = picture;
+  };
 
-                <div className="content__price">
-                    <p className="price__now">
-                        {data.base_price.toLocaleString('ru-RU')} ₽
-                    </p>
-                </div>
-            </div>
+  return (
+    <Link to={`/product/${data.id}`} className={cardClass}>
+      <img
+        className="card__img"
+        src={imgSrc}
+        alt={data.name}
+        onError={handleImageError}
+      />
+
+      <div className="card__content">
+        <div className="content__desc">
+          <h3>
+            {data.manufacturer_name} | {data.name}
+          </h3>
+          <p>
+            <strong>Категория:</strong> {data.category_name}
+          </p>
+          <p>
+            <strong>Количество:</strong> {data.stockLabel}
+          </p>
+          <p>
+            <strong>Состав:</strong> {data.composition}
+          </p>
         </div>
-    );
+
+        <div className="content__price">
+          {data.discountPercent > 0 && (
+            <span className="price__old">
+              {data.base_price.toLocaleString('ru-RU')} ₽
+            </span>
+          )}
+
+          <span className="price__now">
+            {data.discountedPrice.toLocaleString('ru-RU')} ₽
+          </span>
+
+          {data.discountPercent > 0 ? (
+            <span className="price__discount">
+              Скидка −{data.discountPercent}%
+            </span>
+          ) : (
+            <span className="field-hint">Без скидки</span>
+          )}
+        </div>
+      </div>
+    </Link>
+  );
 }
